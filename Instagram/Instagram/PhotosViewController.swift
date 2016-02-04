@@ -63,8 +63,13 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
         if let data = dataOrNil {
           if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
             data, options:[]) as? NSDictionary {
-              //NSLog("response: \(responseDictionary)")
-              self.data = responseDictionary["data"] as? [NSDictionary]
+              
+              if self.isMoreDataLoading {
+                self.data?.appendContentsOf(responseDictionary["data"] as! [NSDictionary])
+              }
+              else {
+                self.data = responseDictionary["data"] as? [NSDictionary]
+              }
               
               self.isMoreDataLoading = false
               self.loadingMoreView!.stopAnimating()
