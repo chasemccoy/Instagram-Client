@@ -15,7 +15,9 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
   
   var data: [NSDictionary]?
   var refreshControl: UIRefreshControl!
+  
   var isMoreDataLoading = false
+  var loadingMoreView: InfiniteScrollActivityView?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -34,6 +36,16 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
     
     self.tableView.rowHeight = 320
     self.setNeedsStatusBarAppearanceUpdate()
+    
+    // Set up Infinite Scroll loading indicator
+    let frame = CGRectMake(0, tableView.contentSize.height, tableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight)
+    loadingMoreView = InfiniteScrollActivityView(frame: frame)
+    loadingMoreView!.hidden = true
+    tableView.addSubview(loadingMoreView!)
+    
+    var insets = tableView.contentInset;
+    insets.bottom += InfiniteScrollActivityView.defaultHeight;
+    tableView.contentInset = insets
   }
   
   func updateData() {
@@ -55,6 +67,7 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
               self.data = responseDictionary["data"] as? [NSDictionary]
               
               self.isMoreDataLoading = false
+              self.loadingMoreView!.stopAnimating()
               self.tableView.reloadData()
           }
         }
@@ -135,6 +148,11 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
       // When the user has scrolled past the threshold, start requesting
       if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.dragging) {
         isMoreDataLoading = true
+        
+        // Update position of loadingMoreView, and start loading indicator
+        let frame = CGRectMake(0, tableView.contentSize.height, tableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight)
+        loadingMoreView?.frame = frame
+        loadingMoreView!.startAnimating()
         
         updateData()
       }

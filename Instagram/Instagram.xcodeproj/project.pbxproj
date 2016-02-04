@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2E37DE5E1C62A3D500E841D3 /* PhotoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E37DE5D1C62A3D500E841D3 /* PhotoDetailsViewController.swift */; };
+		2E37DE601C62E6A400E841D3 /* InfiniteScrollActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E37DE5F1C62E6A400E841D3 /* InfiniteScrollActivityView.swift */; };
 		2E925A801C3ECBA30000F9E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E925A7F1C3ECBA30000F9E6 /* AppDelegate.swift */; };
 		2E925A851C3ECBA30000F9E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E925A831C3ECBA30000F9E6 /* Main.storyboard */; };
 		2E925A871C3ECBA30000F9E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E925A861C3ECBA30000F9E6 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		2E37DE5D1C62A3D500E841D3 /* PhotoDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDetailsViewController.swift; sourceTree = "<group>"; };
+		2E37DE5F1C62E6A400E841D3 /* InfiniteScrollActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScrollActivityView.swift; sourceTree = "<group>"; };
 		2E925A7C1C3ECBA30000F9E6 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E925A7F1C3ECBA30000F9E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E925A841C3ECBA30000F9E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				2E925A911C3ED5BE0000F9E6 /* PhotosViewController.swift */,
 				2E925A931C3ED7170000F9E6 /* PhotoCell.swift */,
 				2E37DE5D1C62A3D500E841D3 /* PhotoDetailsViewController.swift */,
+				2E37DE5F1C62E6A400E841D3 /* InfiniteScrollActivityView.swift */,
 				2E925A831C3ECBA30000F9E6 /* Main.storyboard */,
 				2E925A861C3ECBA30000F9E6 /* Assets.xcassets */,
 				2E925A881C3ECBA30000F9E6 /* LaunchScreen.storyboard */,
@@ -216,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E37DE601C62E6A400E841D3 /* InfiniteScrollActivityView.swift in Sources */,
 				2E37DE5E1C62A3D500E841D3 /* PhotoDetailsViewController.swift in Sources */,
 				2E925A801C3ECBA30000F9E6 /* AppDelegate.swift in Sources */,
 				2E925A941C3ED7170000F9E6 /* PhotoCell.swift in Sources */,
