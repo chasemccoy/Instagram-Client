@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oav-fc-gXY">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
     </dependencies>
     <scenes>
-        <!--Photos View Controller-->
+        <!--Instagram-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="PhotosViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,22 +18,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="InW-Pl-2QU">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="20"/>
-                                <color key="backgroundColor" red="0.00029342272318899632" green="0.28188902139663696" blue="0.47424536943435669" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="Isi-Jg-md1"/>
-                                </constraints>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="28e-BF-6oO">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PhotoCell" id="hOc-ii-8Jt" customClass="PhotoCell" customModule="Instagram" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hOc-ii-8Jt" id="cy0-t6-ydF">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="so4-7o-Ton">
@@ -48,6 +42,10 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="photoView" destination="so4-7o-Ton" id="f1E-Qh-tT4"/>
+                                            <segue destination="Cgg-mI-GPx" kind="show" id="0Ir-PX-UV4">
+                                                <segue key="commit" inheritsFrom="parent" id="Anc-Y0-oLl"/>
+                                                <segue key="preview" inheritsFrom="commit" id="Mml-Ec-JPM"/>
+                                            </segue>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -55,22 +53,98 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="28e-BF-6oO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="1qg-WE-7aP"/>
                             <constraint firstItem="28e-BF-6oO" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Ask-sz-NE5"/>
+                            <constraint firstItem="28e-BF-6oO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="BaY-fY-Ace"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="28e-BF-6oO" secondAttribute="bottom" id="C4p-Cg-6Ou"/>
-                            <constraint firstAttribute="trailing" secondItem="InW-Pl-2QU" secondAttribute="trailing" id="chx-sD-7qc"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="28e-BF-6oO" secondAttribute="bottom" id="Ksi-8S-d6q"/>
                             <constraint firstItem="28e-BF-6oO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dLV-fV-M3S"/>
-                            <constraint firstItem="InW-Pl-2QU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ep9-ek-khQ"/>
-                            <constraint firstItem="InW-Pl-2QU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="feA-sm-zNy"/>
+                            <constraint firstAttribute="trailing" secondItem="28e-BF-6oO" secondAttribute="trailing" id="gwG-dP-qF6"/>
                             <constraint firstAttribute="trailing" secondItem="28e-BF-6oO" secondAttribute="trailing" id="z8q-MA-nPJ"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Ask-sz-NE5"/>
+                                <exclude reference="dLV-fV-M3S"/>
+                                <exclude reference="z8q-MA-nPJ"/>
+                                <exclude reference="C4p-Cg-6Ou"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Instagram" id="ddi-7X-XIb"/>
                     <connections>
                         <outlet property="tableView" destination="28e-BF-6oO" id="QgF-KJ-QFh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1377" y="550"/>
+        </scene>
+        <!--Photo Details View Controller-->
+        <scene sceneID="Ano-p3-szY">
+            <objects>
+                <viewController id="Cgg-mI-GPx" customClass="PhotoDetailsViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="i0R-Fv-3zg"/>
+                        <viewControllerLayoutGuide type="bottom" id="z84-6G-PG3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XeQ-JR-DFP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kwB-2I-EYJ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kwB-2I-EYJ" firstAttribute="leading" secondItem="XeQ-JR-DFP" secondAttribute="leading" id="1Gh-95-zRW"/>
+                            <constraint firstItem="z84-6G-PG3" firstAttribute="top" secondItem="kwB-2I-EYJ" secondAttribute="bottom" id="Db0-QQ-bC9"/>
+                            <constraint firstItem="kwB-2I-EYJ" firstAttribute="top" secondItem="i0R-Fv-3zg" secondAttribute="bottom" id="adW-UK-4g1"/>
+                            <constraint firstItem="z84-6G-PG3" firstAttribute="top" secondItem="kwB-2I-EYJ" secondAttribute="bottom" id="cEN-ad-LTn"/>
+                            <constraint firstAttribute="trailing" secondItem="kwB-2I-EYJ" secondAttribute="trailing" id="h8J-HZ-FJ5"/>
+                            <constraint firstItem="kwB-2I-EYJ" firstAttribute="leading" secondItem="XeQ-JR-DFP" secondAttribute="leading" id="nz7-So-6pq"/>
+                            <constraint firstItem="kwB-2I-EYJ" firstAttribute="top" secondItem="XeQ-JR-DFP" secondAttribute="top" id="pzN-fU-qMW"/>
+                            <constraint firstAttribute="trailing" secondItem="kwB-2I-EYJ" secondAttribute="trailing" id="zUk-In-tCf"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="1Gh-95-zRW"/>
+                                <exclude reference="adW-UK-4g1"/>
+                                <exclude reference="h8J-HZ-FJ5"/>
+                                <exclude reference="cEN-ad-LTn"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="kwB-2I-EYJ" id="32B-3C-E52"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XO8-mY-sVA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2054" y="550"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fcm-4c-5p2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oav-fc-gXY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Uve-rU-6vO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="iu6-ic-TUr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8EQ-d2-eYp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="565" y="550"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="0Ir-PX-UV4"/>
+    </inferredMetricsTieBreakers>
 </document>

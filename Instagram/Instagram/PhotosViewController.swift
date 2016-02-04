@@ -9,12 +9,13 @@
 import UIKit
 import AFNetworking
 
-class PhotosViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class PhotosViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
   
   @IBOutlet var tableView: UITableView!
   
   var data: [NSDictionary]?
   var refreshControl: UIRefreshControl!
+  var isMoreDataLoading = false
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -52,6 +53,8 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
             data, options:[]) as? NSDictionary {
               //NSLog("response: \(responseDictionary)")
               self.data = responseDictionary["data"] as? [NSDictionary]
+              
+              self.isMoreDataLoading = false
               self.tableView.reloadData()
           }
         }
@@ -103,7 +106,6 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
     
     profileView.setImageWithURL(photoURL!)
     
-    
     let usernameView = UILabel(frame: CGRect(x: 50, y: 10, width: 200, height: 30))
     usernameView.clipsToBounds = true
     usernameView.textColor = UIColor(red:0.022, green:0.21, blue:0.396, alpha:1)
@@ -121,21 +123,39 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
     return 50
   }
   
-  // MARK: - UITableViewDelegate Methods
   
+  // MARK: - Scroll View Delegate Methods
   
-  
-  
-  
-  
-  
-  
-  
-  
+  func scrollViewDidScroll(scrollView: UIScrollView) {
+    if (!isMoreDataLoading) {
+      // Calculate the position of one screen length before the bottom of the results
+      let scrollViewContentHeight = tableView.contentSize.height
+      let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
+      
+      // When the user has scrolled past the threshold, start requesting
+      if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.dragging) {
+        isMoreDataLoading = true
+        
+        updateData()
+      }
+    }
+  }
+
   
   
   
   // MARK: - Helper Methods
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    let photoDetailViewController = segue.destinationViewController as! PhotoDetailsViewController
+    let indexPath = tableView.indexPathForCell(sender as! UITableViewCell)
+
+    let photo = data![(indexPath?.section)!]
+    let images = (photo["images"] as! NSDictionary)["standard_resolution"] as! NSDictionary
+    let photoURL = NSURL(string: images["url"] as! String)
+    
+    photoDetailViewController.imageURL = photoURL!
+  }
   
   override func preferredStatusBarStyle() -> UIStatusBarStyle {
     return .LightContent
